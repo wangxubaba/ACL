@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ConnectPage from "@/pages/ConnectPage";
 import ConfigurePage from "@/pages/ConfigurePage";
+import TopologyPage from "@/pages/TopologyPage";
+import ValidationPage from "@/pages/ValidationPage";
 
 Vue.use(Router)
 
@@ -16,6 +18,17 @@ export default new Router({
       path: '/configure',
       name: 'ConfigurePage',
       component: ConfigurePage
-    }
+    },
+    {
+      path: '/topology',
+      name: 'TopologyPage',
+      component: TopologyPage
+    },
+    {
+      path: '/validation',
+      name: 'ValidationPage',
+      component: ValidationPage
+    },
+
   ]
 })

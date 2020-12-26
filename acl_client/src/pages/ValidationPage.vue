@@ -1,12 +1,12 @@
 <template>
     <div>
-        <p>这里是具体配置命令的编写页面</p>
+        <p>这里是验证页面</p>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Command"
+        name: "ValidationPage"
     }
 </script>
 
