@@ -21,7 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test_connection/',Controller.test_connection),
     path('connect/',Controller.connect),
-    path('execute/',Controller.execute),
-    path('open/',Controller.open),
-    path('save/',Controller.save)
+    path('get/address/',Controller.getCurrentAddress),
+    path('execute/script/',Controller.executeScript),
+    path('execute/validation/',Controller.executeValidation),
+    path('get/script/status/',Controller.getScriptStatus),
+    path('get/validation/status/',Controller.getValidationStatus)
 ]
