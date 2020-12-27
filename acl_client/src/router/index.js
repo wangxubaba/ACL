@@ -4,7 +4,6 @@ import ConnectPage from "@/pages/ConnectPage";
 import ConfigurePage from "@/pages/ConfigurePage";
 import TopologyPage from "@/pages/TopologyPage";
 import ValidationPage from "@/pages/ValidationPage";
-import HomePage from "@/pages/HomePage";
 
 Vue.use(Router)
 
@@ -30,12 +29,6 @@ export default new Router({
       name: 'ValidationPage',
       component: ValidationPage
     },
-    {
-      path: '/home',
-      name: 'home',
-      component: HomePage
-    
-    }
 
   ]
 })
