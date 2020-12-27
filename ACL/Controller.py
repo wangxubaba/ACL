@@ -7,6 +7,8 @@ import Implementation.ScriptManager as sm
 import Implementation.TelnetManager as tm
 import Implementation.ValidationManager as vm
 
+
+
 @require_http_methods(["POST"])
 def test_connection(request):
     body=json.loads(request.body)
@@ -26,11 +28,15 @@ def test_connection(request):
 
 @require_http_methods(["POST"])
 def connect(request):
-    response={}
+    body = json.loads(request.body)
+    connectData = body['connectData']
+    address = connectData['address']
+    username = connectData['username']
+    password = connectData['password']
+    return tm.connect(address,username,password)
     #具体获取参数逻辑自己编写
     #把实现逻辑写到Implementation
     #tm.connect()
-    return JsonResponse(response)
 
 @require_http_methods(["POST"])
 def getCurrentAddress(request):
