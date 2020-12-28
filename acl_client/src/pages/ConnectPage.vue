@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header></Header>
     <Card style="width:600px;margin:140px auto">
       <Form :model="connectData" :label-width="50">
         <h1 align="center">建立连接</h1>
@@ -35,6 +36,7 @@
 </template>
 
 <script>
+import Header from '@/components/Header'
 export default {
   name: "ConnectPage",
   data() {
@@ -44,6 +46,7 @@ export default {
       connectData: {},
     };
   },
+  components:{Header},
   methods: {
     handleConnect() {
       this.spinShow=true;
