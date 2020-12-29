@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.1",
+    "element-ui": "^2.14.1",
+    "highlight.js": "^10.5.0",
     "iview": "^3.5.4",
     "vue": "^2.6.12",
     "vue-router": "^3.4.9",

@@ -2,16 +2,15 @@
 /* eslint-disable */
 <template>
   <div>
-    <Menu mode="horizontal" >
-      <MenuItem name="1" to="/introduce">
-        <Icon type="ios-paper" />
-        实验介绍
-      </MenuItem>
-      <MenuItem name="2" to="/experiment">
-        <Icon type="ios-people" />
-        开始实验
-      </MenuItem>
-    </Menu>
+    <el-menu
+      class="el-menu-demo"
+      mode="horizontal"
+      router=true
+    >
+      <el-menu-item index="/introduce">实验介绍</el-menu-item>
+      <el-menu-item index="/connect">Telnet登录</el-menu-item>
+      <el-menu-item index="/experiment">进行实验</el-menu-item>
+    </el-menu>
   </div>
 </template>
 
