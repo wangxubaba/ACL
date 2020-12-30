@@ -82,7 +82,10 @@ def executeValidation(request):
     # 具体获取参数逻辑自己编写
     # 把实现逻辑写到Implementation
     # vm.executeScript()
-    return JsonResponse(response)
+    body = json.loads(request.body)
+    id = body['id']
+    routerN=body['routerN']
+    return vm.executeScript(id,routerN)
 
 
 @require_http_methods(["POST"])

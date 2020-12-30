@@ -42,6 +42,7 @@ def getAddress():
 
 # 执行某个命令
 def execute(command,routerNum):
+    response = {}
     if routerNum==0:
         settings.TND.write(command.encode()+b'\n')
         time.sleep(1)
