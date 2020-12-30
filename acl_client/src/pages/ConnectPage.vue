@@ -1,63 +1,59 @@
 <template>
   <div>
-    <Card style="width:600px;margin:140px auto">
-      <Form :model="connectData" :label-width="50">
+    <Header></Header>
+    <el-card style="width:600px;margin:140px auto">
+      <el-form ref="form" :model="connectData" label-width="80px" v-loading="loading">
         <h1 align="center">建立连接</h1>
-        <FormItem label="地址">
-          <Select v-model="connectData.address">
-            <Option
-              v-for="add in addressList"
-              :value="add"
-              :key="add"
-              >{{ add }}</Option
-            >
-          </Select>
-        </FormItem>
-        <FormItem label="用户">
-          <Input
-            v-model="connectData.username"
-            placeholder="请输入用户"
-          ></Input>
-        </FormItem>
-        <FormItem label="密码">
-          <Input
-            v-model="connectData.password"
-            placeholder="请输入密码"
-          ></Input>
-        </FormItem>
-        <FormItem>
-          <Button type="primary" @click="handleConnect">连接</Button>
-        </FormItem>
-      </Form>
-      <Spin size="large" fix v-if="spinShow"></Spin>
-    </Card>
+          <el-form-item label="地址">
+            <el-select v-model="connectData.address" placeholder="请选择地址">
+              <el-option
+                v-for="item in addressList"
+                :key="item"
+                :label="item"
+                :value="item">
+              </el-option>
+            </el-select>
+          </el-form-item>
+            <el-form-item label="用户名">
+              <el-input v-model="connectData.username"></el-input>
+          </el-form-item>
+            <el-form-item label="密码">
+              <el-input v-model="connectData.password"></el-input>
+          </el-form-item>
+          <el-form-item >
+              <el-button type="primary" round @click="handleConnect">连接</el-button>
+          </el-form-item>
+      </el-form>
+    </el-card>
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header'
 export default {
   name: "ConnectPage",
   data() {
     return {
-      spinShow:false,
-      addressList:['192.168.1.1','192.168.1.2','192.168.1.3'],
+      loading:false,
+      addressList:['192.168.0.2','192.168.0.3','192.168.0.4','192.168.0.5'],
       connectData: {},
     };
   },
+  components:{Header},
   methods: {
     handleConnect() {
-      this.spinShow=true;
+      this.loading=true;
       this.$axios
         .post("/server/connect/", {
           connectData: this.connectData,
         })
         .then((res) => {
-          this.spinShow=false;
+          this.loading=false;
           if (res.data.code === 200) {
             console.log(res);
-            this.$Message.success("连接成功!");
+            this.$message.success("连接成功!");
           } else {
-            this.$Message.error(res.data.msg);
+            this.$message.error(res.data.msg);
           }
         });
     },

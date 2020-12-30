@@ -121,4 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-TN = telnetlib.Telnet()
+TNA = telnetlib.Telnet()
+TNB = telnetlib.Telnet()
+TNC= telnetlib.Telnet()
+TND= telnetlib.Telnet()

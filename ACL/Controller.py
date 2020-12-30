@@ -7,6 +7,7 @@ import Implementation.ScriptManager as sm
 import Implementation.TelnetManager as tm
 import Implementation.ValidationManager as vm
 
+from django.conf import settings
 
 @require_http_methods(["POST"])
 def test_connection(request):
@@ -33,11 +34,19 @@ def connect(request):
     address = connectData['address']
     username = connectData['username']
     password = connectData['password']
-    return tm.connect(address, username, password)
-    # 具体获取参数逻辑自己编写
-    # 把实现逻辑写到Implementation
-    # tm.connect()
 
+    print(connectData)
+    if address== "192.168.0.2":
+        return tm.connect(settings.TND,address,username,password)
+    if address== "192.168.0.3":
+        return tm.connect(settings.TNA,address,username,password)
+    if address== "192.168.0.4":
+        return tm.connect(settings.TNB,address,username,password)
+    if address== "192.168.0.5":
+        return tm.connect(settings.TNC,address,username,password)
+    #具体获取参数逻辑自己编写
+    #把实现逻辑写到Implementation
+    #tm.connect()
 
 @require_http_methods(["POST"])
 def getCurrentAddress(request):
