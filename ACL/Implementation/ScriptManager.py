@@ -107,7 +107,7 @@ def executeScript(number):
         tm.execute("ex", 2)
 
     response = {'code': 200, 'msg': 'success'}
-    return HttpResponse(response)
+    return HttpResponse(JsonResponse(response))
 
 
 # 时时显示各条操作的执行情况
