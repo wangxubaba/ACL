@@ -21,6 +21,10 @@ def connect(tn,address,username,password):
     # 等待Password出现后输入用户名，最多等待10秒
     tn.read_until(b'Password: ', timeout=10)
     tn.write(password.encode('ascii') + b'\n')
+
+    tn.write("en".encode('ascii') + b'\n')
+    tn.read_until(b'Password: ', timeout=10)
+    tn.write(password.encode('ascii') + b'\n')
     # 延时5秒再收取返回结果，给服务端足够响应时间
     time.sleep(5)
     result = tn.read_very_eager().decode('utf-8')
@@ -53,10 +57,14 @@ def execute(command,routerNum):
         response['data']=result
         return JsonResponse(response)
     if routerNum==1:
+
         settings.TNA.write(command.encode()+b'\n')
-        time.sleep(1)
+        if command.startswith('p'):
+            time.sleep(15)
+        else:
+            time.sleep(1)
         #获取命令结果
-        result=settings.TNA.read_very_eager().decode('utf-8')
+        result=settings.TNA.read_eager().decode('utf-8')
         response['code'] = 200
         response['msg'] = '执行完成'
         response['data']=result

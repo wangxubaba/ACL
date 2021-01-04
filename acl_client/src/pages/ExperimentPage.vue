@@ -341,7 +341,6 @@ export default {
           id: 0,
         })
         .then((res) => {
-          this.loading = false;
           if (res.data.code === 200) {
             console.log(res);
             this.$message.success(res.data.msg);
@@ -356,7 +355,6 @@ export default {
           id: 1,
         })
         .then((res) => {
-          this.loading = false;
           if (res.data.code === 200) {
             this.$message.success(res.data.msg);
           } else {
@@ -370,7 +368,7 @@ export default {
           id: 2,
         })
         .then((res) => {
-          this.loading = false;
+
           if (res.data.code === 200) {
             this.$message.success(res.data.msg);
           } else {
@@ -384,7 +382,6 @@ export default {
           id: 3,
         })
         .then((res) => {
-          this.loading = false;
           if (res.data.code === 200) {
             this.$message.success(res.data.msg);
           } else {
@@ -398,7 +395,6 @@ export default {
           id: 4,
         })
         .then((res) => {
-          this.loading = false;
           if (res.data.code === 200) {
             this.$message.success("连接成功!");
           } else {
@@ -412,7 +408,7 @@ export default {
           id: 5,
         })
         .then((res) => {
-          this.loading = false;
+
           if (res.data.code === 200) {
             this.$message.success(res.data.msg);
           } else {
