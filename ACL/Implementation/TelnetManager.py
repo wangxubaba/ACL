@@ -22,8 +22,11 @@ def connect(address,username,password):
     settings.TN.read_until(b'Password: ', timeout=10)
     settings.TN.write(password.encode('ascii') + b'\n')
     # 延时5秒再收取返回结果，给服务端足够响应时间
+
+    settings.TN.write('show int'.encode()+b'\n')
     time.sleep(5)
-    result = tn.read_very_eager().decode('utf-8')
+    result = settings.TN.read_very_eager().decode('utf-8')
+    print(result)
     if 'Login invalid' in result:  # Cisco交换登录失败提示语
         text = '{} 登录失败，用户名或密码错误'.format(address)
         print(text)
@@ -34,7 +37,7 @@ def connect(address,username,password):
         text = '{} 登录成功'.format(address)
         print(text)
         response['code'] = 200
-        response['msg'] = text
+        response['msg'] = result
         return JsonResponse(response)
 # 用户获取当前连接的路由器的telnet地址
 def getAddress():
@@ -42,6 +45,7 @@ def getAddress():
 
 # 执行某个命令
 def execute(command):
+    response={}
     settings.TN.write(command.encode()+b'\n')
     time.sleep(1)
     #获取命令结果
