@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       spinShow:false,
-      addressList:['192.168.1.1','192.168.1.2','192.168.1.3'],
+      addressList:['192.168.0.3','192.168.0.4','192.168.0.5'],
       connectData: {},
     };
   },
